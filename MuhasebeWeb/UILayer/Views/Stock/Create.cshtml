@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Stok Ekle</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    
+                                    <form class="form-horizontal" action="/Stock/Insert" method="post" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Stok Bilgisi</h4>
+                                            <div class="mb-3 row">
+                                                <label for="fname"
+                                                       class="col-sm-3 text-end control-label col-form-label">İsim</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="fname"
+                                                           name="Name"
+                                                           placeholder="İsim" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Alış Fiyatı</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control money"
+                                                           id="cono1"
+                                                           name="BuyAmount"
+                                                           placeholder="Alış Fiyatı" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Satış Fiyatı</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control money"
+                                                           id="cono2"
+                                                           name="SellAmount"
+                                                           placeholder="Satış Fiyatı" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Kdv</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="cono3"
+                                                           name="Tax"
+                                                           placeholder="Kdv" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 text-end control-label col-form-label">Dosya seç</label>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Yükle</span>
+
+                                                        <div class="custom-file">
+                                                            <input type="file"
+                                                                   name="File"
+                                                                   class="form-control"
+                                                                   id="File" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-3 border-top">
+                                            <div class="text-end">
+                                                <button type="submit"
+                                                        class="
+                          btn btn-info
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    Kaydet
+                                                </button>
+                                                <button type="reset"
+                                                        class="
+                          btn btn-dark
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    İptal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script>
+        $('.money').mask("#,##0.00", { reverse: true });
+
+
+    </script>
+}

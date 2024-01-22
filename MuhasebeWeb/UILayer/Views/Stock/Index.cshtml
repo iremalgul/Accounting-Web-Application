@@ -1,0 +1,55 @@
+﻿@model List<DtoLayer.Dtos.StockDto>
+@{
+    ViewBag.Title = "Index";
+}
+@section css{
+    <link rel="stylesheet" href="/Content/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+}
+
+<div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Stok Listesi</h4>
+                </div>
+                <div class="card-body" id="partialStockTable">
+                    @{ Html.RenderAction("TablePArtial", "Stock");}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="/Content/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="/Content/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        function DeleteClicked(button) {
+            $('#selectedId').val($(button).data('id'));
+
+            var model = {
+                id: $(button).data('id'),
+            };
+
+            ajaxSendDataWithLoadingGetData(model, '/Stock/Delete', function (response) {
+                if (response.isSuccess) {
+                   
+                    ajaxPartialView(null, '/Stock/TablePArtial', $('#partialStockTable'), function () {
+                        $("#zero_config").DataTable();
+                    });
+                   
+                }
+                else {
+                   
+                }
+            });
+        }
+    </script>
+
+}

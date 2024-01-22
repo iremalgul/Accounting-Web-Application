@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+@section css{
+    <link rel="stylesheet" href="/Content/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Ödeme</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Firma seç</label>
+                                <select class="form-select" aria-label="Default select example" name="FirmId" id="FirmId">
+                                    @foreach (var item in Html.GetAllFirms())
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">&nbsp;</label><br />
+                                <button onclick="getir()" class="btn btn-success">
+                                    Getir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <button class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#bs-example-modal-md">
+                                Ödeme Al
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div id="PartialGrid">
+                        @*@{Html.RenderAction("PartialGrid", "Case"); }*@
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bs-example-modal-md"
+     class="modal fade"
+     tabindex="-1"
+     aria-labelledby="bs-example-modal-md"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myModalLabel">
+                    Ödeme bilgisi
+                </h4>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="form-group mb-4">
+                        <label for="cono1"
+                               class="mr-sm-2">Miktar</label>
+                        <input type="text"
+                               class="form-control money"
+                               id="Amount"
+                               name="Amount"
+                               placeholder="Miktar" />
+
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="InvoiceDate"
+                               class="mr-sm-2">Tarih</label>
+
+                        <input type="datetime-local"
+                               class="form-control "
+                               id="Date"
+                               name="Date"
+                               placeholder="Tarih" />
+
+                    </div>
+
+
+
+                    <div class="form-group mb-4">
+                        <label for="fname"
+                               class="mr-sm-2">Ödeme tipi</label>
+                        <select class="form-select" aria-label="Default select example" name="PaymentTypeId" id="PaymentTypeId">
+                            @foreach (var item in Html.GetAllPaymentTypes())
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="
+                                  btn btn-info
+                                  text-danger
+                                  font-weight-medium
+                                  waves-effect
+                                "
+                        data-bs-dismiss="modal"
+                        onclick="AddPayment()">
+                    Kaydet
+                </button>
+                <button type="button"
+                        class="
+                                  btn btn-light-danger
+                                  text-danger
+                                  font-weight-medium
+                                  waves-effect
+                                "
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="/Content/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="/Content/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        $('.money').mask("#,##0.00", { reverse: true });
+        var PaymentModel = {
+            FirmId: null,
+            Amount: null,
+            DateStr: null,
+            PaymentType: null
+        };
+       
+        function getir() {
+            var firmId = $('#FirmId').val();
+            ajaxPartialView(null, '/Payment/PartialGrid?firmId=' + firmId , $('#PartialGrid'), null);
+        }
+
+
+        function AddPayment() {
+            var firmId = $('#FirmId').val();
+            PaymentModel.FirmId = $('#FirmId').val();
+            PaymentModel.Amount = $('#Amount').val().replace(',', '').replace('.', ',');
+            PaymentModel.DateStr = $('#Date').val();
+            PaymentModel.PaymentType = $('#PaymentTypeId').val();
+            ajaxSendDataWithLoadingGetData(PaymentModel, '/Payment/AddPayment', function (response) {
+                if (response) {
+                    alert('İşlem başarılı');
+                    ajaxPartialView(null, '/Payment/PartialGrid?firmId=' + firmId, $('#PartialGrid'), null);
+
+                }
+                else {
+                    alert('İşlem başarısız');
+                }
+            });
+        }
+        
+
+        function DeleteClicked(button) {
+            var firmId = $('#FirmId').val();
+            $('#selectedId').val($(button).data('id'));
+
+            var model = {
+                id: $(button).data('id'),
+            };
+
+            ajaxSendDataWithLoadingGetData(model, '/Payment/DeletePayment', function (response) {
+                if (response.isSuccess) {
+                  
+                    ajaxPartialView(null, '/Payment/PartialGrid?firmId=' + firmId, $('#PartialGrid'), null);
+
+                }
+                else {
+
+                }
+            });
+        }
+
+    </script>
+
+
+
+
+
+}
+
+
+
+
+

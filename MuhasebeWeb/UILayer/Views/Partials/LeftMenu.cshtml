@@ -1,0 +1,236 @@
+﻿
+
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- User profile -->
+        <div class="user-profile position-relative"
+             style="
+              background: url(/Content/assets/images/background/user-info.jpg)
+                no-repeat;
+            ">
+            <!-- User profile image -->
+            <div class="profile-img">
+                <img src="/Content/assets/images/users/profile.png"
+                     alt="user"
+                     class="w-100" />
+            </div>
+            <!-- User profile text-->
+            <div class="profile-text pt-1 dropdown">
+                <a href="#"
+                   class="
+                  dropdown-toggle
+                  u-dropdown
+                  w-100
+                  text-white
+                  d-block
+                  position-relative
+                "
+                   id="dropdownMenuLink"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">Markarn Doe</a>
+                <div class="dropdown-menu animated flipInY"
+                     aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">
+                        <i data-feather="user"
+                           class="feather-sm text-info me-1 ms-1"></i>
+                        My Profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i data-feather="credit-card"
+                           class="feather-sm text-info me-1 ms-1"></i>
+                        My Balance
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i data-feather="mail"
+                           class="feather-sm text-success me-1 ms-1"></i>
+                        Inbox
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i data-feather="settings"
+                           class="feather-sm text-warning me-1 ms-1"></i>
+                        Account Setting
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="authentication-login3.html">
+                        <i data-feather="log-out"
+                           class="feather-sm text-danger me-1 ms-1"></i>
+                        Logout
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="ps-4 p-2">
+                        <a href="#" class="btn d-block w-100 btn-info rounded-pill">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">
+                    <i class="mdi mdi-dots-horizontal"></i>
+                    <span class="hide-menu">Personal</span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark"
+                       href="javascript:void(0)"
+                       aria-expanded="false">
+                        <i class="mdi mdi-gauge"></i>
+                        <span class="hide-menu">Stok  </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index","Stock")" class="sidebar-link">
+                                <i class="mdi mdi-adjust"></i>
+                                <span class="hide-menu"> Stok Listesi </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Create","Stock")" class="sidebar-link">
+                                <i class="mdi mdi-adjust"></i>
+                                <span class="hide-menu"> Stok Ekle </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark"
+                       href="javascript:void(0)"
+                       aria-expanded="false">
+                        <i class="mdi mdi-content-copy"></i><span class="hide-menu">Firma </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index","Firm")"
+                               class="sidebar-link">
+                                <i class="mdi mdi-format-align-left"></i><span class="hide-menu">
+                                    Firma listesi
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Create","Firm")"
+                               class="sidebar-link">
+                                <i class="mdi mdi-format-align-right"></i><span class="hide-menu">
+                                    Firma ekle
+                                </span>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </li>
+
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark"
+                       href="javascript:void(0)"
+                       aria-expanded="false">
+                        <i class="mdi mdi-ungroup"></i><span class="hide-menu">Fatura</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index","Invoice")" class="sidebar-link">
+                                <i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> Faturalar </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("AddInvoice","Invoice")" class="sidebar-link">
+                                <i class="mdi mdi-vector-rectangle"></i><span class="hide-menu">Fatura Kes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark"
+                       href="javascript:void(0)"
+                       aria-expanded="false">
+                        <i class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">Kasa </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index","Case")" class="sidebar-link">
+                                <i class="mdi mdi-email"></i><span class="hide-menu"> Kasalar </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("CaseDetail","Case")" class="sidebar-link">
+                                <i class="mdi mdi-email-alert"></i><span class="hide-menu"> Kasa işlemleri </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark"
+                       href="javascript:void(0)"
+                       aria-expanded="false">
+                        <i class="mdi mdi-bookmark-plus-outline"></i><span class="hide-menu">Ödeme</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index","Payment")" class="sidebar-link">
+                                <i class="mdi mdi-book-multiple"></i><span class="hide-menu"> Ödeme tipleri </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Add","Payment")" class="sidebar-link">
+                                <i class="mdi mdi-book-plus"></i><span class="hide-menu"> Ödeme al </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+               
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                       href="authentication-login1.html"
+                       aria-expanded="false">
+                        <i class="mdi mdi-directions"></i><span class="hide-menu">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- Bottom points-->
+    <div class="sidebar-footer">
+        <!-- item-->
+        <a href=""
+           class="link"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           title="Settings">
+            <i class="ti-settings"></i>
+        </a>
+        <!-- item-->
+        <a href=""
+           class="link"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           title="Email">
+            <i class="mdi mdi-gmail"></i>
+        </a>
+        <!-- item-->
+        <a href=""
+           class="link"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           title="Logout">
+            <i class="mdi mdi-power"></i>
+        </a>
+    </div>
+    <!-- End Bottom points-->
+</aside>

@@ -1,0 +1,6 @@
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\bin\Debug\Helpers.dll
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\bin\Debug\Helpers.pdb
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\obj\Debug\Helpers.csproj.AssemblyReference.cache
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\obj\Debug\Helpers.dll
+C:\Users\İrem\Source\Repos\MuhasebeWeb\Helpers\obj\Debug\Helpers.pdb

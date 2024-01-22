@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "CaseDetail";
+}
+@section css{
+    <link rel="stylesheet" href="/Content/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Kasalar</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Kasa seç</label>
+                                <select class="form-select mr-sm-2" id="caseId" name="caseId">
+                                    @foreach (var item in Html.GetAllCases())
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Tarih seç</label>
+                                <input type="datetime-local" class="form-control" id="ProcessDate" name="ProcessDate">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">&nbsp;</label><br />
+                                <button onclick="getir()" class="btn btn-success">
+                                    Getir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <button class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#bs-example-modal-md">
+                                Detay
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div id="PartialGrid">
+                        @*@{Html.RenderAction("PartialGrid", "Case"); }*@
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bs-example-modal-md"
+     class="modal fade"
+     tabindex="-1"
+     aria-labelledby="bs-example-modal-md"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myModalLabel">
+                    Kasa detay
+                </h4>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Giriş/Çıkış</label>
+                        <select class="form-select mr-sm-2" id="InOut" name="InOut">
+                            <option value="True">Giriş</option>
+                            <option value="False">Çıkış</option>
+                        </select>
+
+
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="cono1"
+                               class="mr-sm-2">Miktar</label>
+                        <input type="text"
+                               class="form-control money"
+                               id="Amount"
+                               name="Amount"
+                               placeholder="Miktar" />
+
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="fname"
+                               class="mr-sm-2">Açıklama</label>
+
+                        <textarea type="text"
+                                  class="form-control"
+                                  id="Description"
+                                  name="Description"
+                                  placeholder="Açıklama"></textarea>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="
+                                  btn btn-info
+                                  text-danger
+                                  font-weight-medium
+                                  waves-effect
+                                "
+                        data-bs-dismiss="modal"
+                        onclick="saveCaseDetail()">
+                    Kaydet
+                </button>
+                <button type="button"
+                        class="
+                                  btn btn-light-danger
+                                  text-danger
+                                  font-weight-medium
+                                  waves-effect
+                                "
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="/Content/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="/Content/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        $('.money').mask("#,##0.00", { reverse: true });
+
+        var CaseModel = {
+            CaseId: null,
+            ProcessDateStr: null,
+            InOut: null,
+            Amount: null,
+            Description: null
+        };
+        function getir() {
+            var date = $('#ProcessDate').val();
+            var caseId = $('#caseId').val();
+            ajaxPartialView(null, '/Case/PartialGrid?date=' + date + '&caseId=' + caseId, $('#PartialGrid'), null);
+        }
+        function saveCaseDetail() {
+            CaseModel.CaseId = $('#caseId').val();
+            CaseModel.ProcessDateStr = $('#ProcessDate').val();
+
+            CaseModel.InOut = $('#InOut').val();
+            CaseModel.Amount = $('#Amount').val().replace(',', '').replace('.', ',');
+            CaseModel.Description = $('#Description').val();
+            debugger;
+            ajaxSendDataWithLoadingGetData(CaseModel, '/Case/AddCaseDetail', function (response) {
+                if (response) {
+                    alert('İşlem başarılı');
+                    ajaxPartialView(null, '/Case/PartialGrid?date=' + CaseModel.ProcessDateStr + '&caseId=' + CaseModel.CaseId, $('#PartialGrid'), null);
+
+                }
+                else {
+                    alert('İşlem başarısız');
+                }
+            });
+        }
+
+        function DeleteClicked(button) {
+            $('#selectedId').val($(button).data('id'));
+
+            var model = {
+                id: $(button).data('id'),
+            };
+
+            ajaxSendDataWithLoadingGetData(model, '/Case/DeleteCaseDetail', function (response) {
+                if (response.isSuccess) {
+                    var date = $('#ProcessDate').val();
+                    var caseId = $('#caseId').val();
+                    ajaxPartialView(null, '/Case/PartialGrid?date=' + date + '&caseId=' + caseId, $('#PartialGrid'), function () {
+
+                    });
+
+                }
+                else {
+
+                }
+            });
+        }
+
+    </script>
+
+
+
+
+
+}

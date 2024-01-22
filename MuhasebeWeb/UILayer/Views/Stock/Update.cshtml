@@ -1,0 +1,183 @@
+﻿@model DtoLayer.Dtos.StockDto
+@{
+    ViewBag.Title = "Update";
+}
+<div class="row page-titles">
+    <div class="col-md-5 col-12 align-self-center">
+        <h3 class="text-themecolor mb-0">Dashboard</h3>
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0)">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </div>
+    <div class="col-md-7 col-12 align-self-center d-none d-md-block">
+        <div class="d-flex mt-2 justify-content-end">
+            <div class="d-flex me-3 ms-2">
+                <div class="chart-text me-2">
+                    <h6 class="mb-0"><small>THIS MONTH</small></h6>
+                    <h4 class="mt-0 text-info">$58,356</h4>
+                </div>
+                <div class="spark-chart">
+                    <div id="monthchart"></div>
+                </div>
+            </div>
+            <div class="d-flex ms-2">
+                <div class="chart-text me-2">
+                    <h6 class="mb-0"><small>LAST MONTH</small></h6>
+                    <h4 class="mt-0 text-primary">$48,356</h4>
+                </div>
+                <div class="spark-chart">
+                    <div id="lastmonthchart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Zero Configuration</h4>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-3">
+                        DataTables has most features enabled by default, so all you
+                        need to do to use it with your own tables is to call the
+                        construction function:<code> $().DataTable();</code>. You
+                        can refer full documentation from here
+                        <a href="https://datatables.net/">Datatables</a>
+                    </h6>
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body border-bottom p-4 mb-3">
+                                        <h4 class="card-title">Project Assigning</h4>
+                                        <h6 class="card-subtitle mb-0">
+                                            This is the basic horizontal form with labels on left and
+                                            form controls on right in one line. To use add class
+                                            <mark><code>form-horizontal</code></mark> to the form tag
+                                            and give class <mark><code>row</code></mark> with mb-3.
+                                        </h6>
+                                    </div>
+                                    <form class="form-horizontal" action="/Stock/Edit" method="post" enctype="multipart/form-data">
+                                        <input name="StockId" id="selectedId" value="@Model.Id" hidden="hidden" />
+                                        <div class="card-body">
+                                            <h4 class="card-title">Stok Bilgisi</h4>
+                                            <div class="mb-3 row">
+                                                <label for="fname"
+                                                       class="col-sm-3 text-end control-label col-form-label">İsim</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="fname"
+                                                           name="Name"
+                                                           placeholder="First Name Here"
+                                                           value="@Model.Name" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Alış Fiyatı</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control money"
+                                                           id="cono1"
+                                                           name="BuyAmount"
+                                                           placeholder="Contact No Here"
+                                                           value="@Model.BuyAmount" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Satış Fiyatı</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control money"
+                                                           id="cono2"
+                                                           name="SellAmount"
+                                                           placeholder="Contact No Here"
+                                                           value="@Model.SellAmount" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Kdv</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="cono3"
+                                                           name="Tax"
+                                                           placeholder="Contact No Here"
+                                                           value="@Model.Tax" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 text-end control-label col-form-label">Select File</label>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Upload</span>
+
+                                                        <div class="custom-file">
+                                                            <input type="file"
+                                                                   name="File"
+                                                                   class="form-control"
+                                                                   id="File" />
+                                                            <img src="~/Pictures/@Model.PictureUrl" style="height: 150px;width: 150px;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-3 border-top">
+                                            <div class="text-end">
+                                                <button type="submit"
+                                                        class="
+                          btn btn-info
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    Save
+                                                </button>
+                                                <button type="reset"
+                                                        class="
+                          btn btn-dark
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script>
+        $('.money').mask("#,##0.00", { reverse: true });
+
+
+    </script>
+}

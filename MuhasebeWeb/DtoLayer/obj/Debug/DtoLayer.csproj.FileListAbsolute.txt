@@ -1,0 +1,6 @@
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\bin\Debug\DtoLayer.dll
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\bin\Debug\DtoLayer.pdb
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\obj\Debug\DtoLayer.csproj.AssemblyReference.cache
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\obj\Debug\DtoLayer.csproj.CoreCompileInputs.cache
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\obj\Debug\DtoLayer.dll
+C:\Users\İrem\Source\Repos\MuhasebeWeb\DtoLayer\obj\Debug\DtoLayer.pdb

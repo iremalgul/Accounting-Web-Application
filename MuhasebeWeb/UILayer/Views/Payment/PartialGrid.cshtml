@@ -1,0 +1,43 @@
+﻿@model List<DtoLayer.Dtos.PaymentDto>
+
+<div class="row">
+    <div class="col-12">
+        <table id="zero_config"
+               class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Firma</th>
+                    <th>Miktar</th>
+                    <th>Tarih</th>
+                    <th>Ödeme tipi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ decimal totalAmount = 0;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Firm.Name</td>
+                        <td>@item.Amount</td>
+                        <td>@item.Date</td>
+                        <td>@item.PaymentType1.Name</td>
+                        <td> <button type="button" class="btn btn-danger" id="selectedId" data-id="@item.Id" onclick="DeleteClicked(this)">Sil</button></td>
+
+                    </tr>
+                    totalAmount += @item.Amount;
+
+                }
+
+
+            </tbody>
+            <div class="col-md-12">
+                <div class="pull-right m-t-30 text-end">
+
+                    <h3><b> Toplam :</b> @totalAmount</h3>
+                </div>
+
+        </table>
+    </div>
+</div>
+

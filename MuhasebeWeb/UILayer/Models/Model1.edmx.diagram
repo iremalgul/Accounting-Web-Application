@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59cbe8fbe15945aba4d9c66e0edbe9cb" Name="Diagram1">
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.Case" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.CaseDetail" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.Firm" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.Invoice" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.InvoiceDetail" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.Payment" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.PaymentType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.Stock" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuhasebeMVCWebModel.User" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_CaseDetail_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_Invoice_Firm" ManuallyRouted="false" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_Payment_Firm" ManuallyRouted="false" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_InvoiceDetail_Stock" ManuallyRouted="false" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_Payment_PaymentType" ManuallyRouted="false" />
+        <AssociationConnector Association="MuhasebeMVCWebModel.FK_InvoiceDetail_Invoice" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Firma Ekle</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+
+                                    <form class="form-horizontal" action="/Firm/Insert" method="post" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Firma Bilgisi</h4>
+                                            <div class="mb-3 row">
+                                                <label for="fname"
+                                                       class="col-sm-3 text-end control-label col-form-label">İsim</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="fname"
+                                                           name="Name"
+                                                           placeholder="İsim" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Adres</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control "
+                                                           id="cono1"
+                                                           name="Adress"
+                                                           placeholder="Adres" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Telefon</label>
+                                                <div class="col-sm-9">
+                                                    <input type="tel"
+                                                           class="form-control "
+                                                           id="cono2"
+                                                           name="Phone"
+                                                           placeholder="Telefon" />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="cono1"
+                                                       class="col-sm-3 text-end control-label col-form-label">Firma Numarası</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="cono3"
+                                                           name="IdentityNumber"
+                                                           placeholder="Firma Numarası" />
+                                                </div>
+                                            </div>
+
+
+                                           
+                                        </div>
+
+
+                                        <div class="p-3 border-top">
+                                            <div class="text-end">
+                                                <button type="submit"
+                                                        class="
+                          btn btn-info
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    Kaydet
+                                                </button>
+                                                <button type="reset"
+                                                        class="
+                          btn btn-dark
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    İptal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script>
+        $('.money').mask("#,##0.00", { reverse: true });
+
+
+    </script>
+}

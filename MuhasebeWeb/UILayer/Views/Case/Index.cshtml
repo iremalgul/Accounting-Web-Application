@@ -1,0 +1,114 @@
+﻿@model List<DtoLayer.Dtos.CaseDto>
+@{
+    ViewBag.Title = "Index";
+}
+@section css{
+    <link rel="stylesheet" href="/Content/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+}
+
+<div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="border-bottom title-part-padding">
+                    <h4 class="card-title mb-0">Kasalar</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="zero_config"
+                               class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>İsim</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <a href="@Url.Action("Update", "Case", new {id=item.Id})" class="btn btn-primary">Güncelle</a>
+                                            <a href="@Url.Action("Delete", "Case", new {id=item.Id})" class="btn btn-danger">Sil</a>
+                                           
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+
+                                    <form class="form-horizontal" action="/Case/Create" method="post" enctype="multipart/form-data">
+                                        <input name="CaseId" id="CaseId" value="0" hidden="hidden" />
+                                        <div class="card-body">
+                                            <h4 class="card-title">Kasa Bilgisi</h4>
+                                            <div class="mb-3 row">
+                                                <label for="fname"
+                                                       class="col-sm-3 text-end control-label col-form-label">İsim</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="fname"
+                                                           name="Name"
+                                                           placeholder="İsim" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="p-3 border-top">
+                                            <div class="text-end">
+                                                <button type="submit"
+                                                        class="
+                          btn btn-info
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    Kaydet
+                                                </button>
+                                                <button type="reset"
+                                                        class="
+                          btn btn-dark
+                          rounded-pill
+                          px-4
+                          waves-effect waves-light
+                        ">
+                                                    İptal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="/Content/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="/Content/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        function DeleteClicked(button) {
+            $('#selectedId').val($(button).data('id'));
+
+        }
+    </script>
+}
